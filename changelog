@@ -5,6 +5,7 @@
 * improved tests
 * deps: updated ramda incl. breaking change (propEq)
 * deps: updated svg-path-bbox
+* added support for invalid symbol
 
 1.0.1
 * initial public version

@@ -183,6 +183,7 @@ export const instructions = (options, meta) => {
     getSize: () => size,
     getAnchor: () => anchor,
     asSVG: () => svg,
-    toDataURL: () => 'data:image/svg+xml;utf8,' + encodeURIComponent(svg)
+    toDataURL: () => 'data:image/svg+xml;utf8,' + encodeURIComponent(svg),
+    isValid: () => meta.isValid
   }
 }

@@ -11,8 +11,8 @@
   "module": "./dist/signs.es.js",
   "scripts": {
     "prepare": "vite build",
-    "test": "mocha 'test/**/*.test.js' --recursive",
-    "coverage": "c8 --all --include 'src/**/*' --reporter=html mocha 'test/**/*.test.js' --recursive"
+    "test": "mocha --recursive",
+    "coverage": "c8 --all --include 'src/**/*' --reporter=html mocha --recursive"
   },
   "keywords": [
     "app6",

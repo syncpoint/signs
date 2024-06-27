@@ -13,7 +13,7 @@ export const document = options => {
 
 
 const meta = options => {
-  const meta = {}
+  const meta = { invalid: false }
   const [sidc, standard] = options.sidc.split('+')
 
   const parts = {

@@ -1,11 +1,15 @@
-import { legacy, modern } from './standard/index.js'
+import { legacy, modern, fallback } from './standard/index.js'
 import { AMPLIFIERS } from './amplifiers.js'
 
 const factories = [
   legacy,
-  modern
+  modern,
+  fallback
 ]
 
+/**
+ * Translate name-based legacy modifiers to letter-based amplifiers.
+ */
 const translateModifers = options =>
   Object.entries(options).reduce((acc, [k, v]) => {
     if (AMPLIFIERS[k]) acc[AMPLIFIERS[k]] = v
