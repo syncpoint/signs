@@ -82,8 +82,8 @@ const text = ({ x, y, text, ...rest}) => {
 
 export const of = R.cond([
   [R.is(Array), xs => xs.map(of).reduce(merge)],
-  [R.propEq('type', 'path'), path],
-  [R.propEq('type', 'circle'), circle],
-  [R.propEq('type', 'text'), text],
-  [R.propEq('type', 'g'), group]
+  [R.propEq('path', 'type'), path],
+  [R.propEq('circle', 'type'), circle],
+  [R.propEq('text', 'type'), text],
+  [R.propEq('g', 'type'), group]
 ])

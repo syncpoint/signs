@@ -40,10 +40,10 @@ export const overlay = instruction('open', 'style:frame/overlay')
 
 export const context = options => {
   const text = R.cond([
-    [R.propEq('joker', true), R.always('J')],
-    [R.propEq('faker', true), R.always('K')],
-    [R.propEq('context', 'EXERCISE'), R.always('X')],
-    [R.propEq('context', 'SIMULATION'), R.always('S')],
+    [R.propEq(true, 'joker'), R.always('J')],
+    [R.propEq(true, 'faker'), R.always('K')],
+    [R.propEq('EXERCISE', 'context'), R.always('X')],
+    [R.propEq('SIMULATION', 'context'), R.always('S')],
     [R.T, R.always(undefined)]
   ])(options)
 

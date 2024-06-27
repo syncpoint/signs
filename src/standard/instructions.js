@@ -137,7 +137,7 @@ export const instructions = (options, meta) => {
   // TODO: sort tree recursively
   const sorter = (a, b) => (a.zIndex || 0) - (b.zIndex || 0)
   children.sort(sorter)
-  children.filter(R.propEq('type', 'g')).map(x => x.children.sort(sorter))
+  children.filter(R.propEq('g', 'type')).map(x => x.children.sort(sorter))
 
   const document = {
     type: 'svg',

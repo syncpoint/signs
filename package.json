@@ -23,7 +23,7 @@
   "author": "horst.dehmer@syncpoint.io",
   "license": "MIT",
   "dependencies": {
-    "ramda": "^0.28.0",
+    "ramda": "^0.30.1",
     "svg-path-bbox": "^1.2.4"
   },
   "devDependencies": {
