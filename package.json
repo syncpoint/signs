@@ -24,7 +24,7 @@
   "license": "MIT",
   "dependencies": {
     "ramda": "^0.30.1",
-    "svg-path-bbox": "^1.2.4"
+    "svg-path-bbox": "^2.0.0"
   },
   "devDependencies": {
     "c8": "^10.1.2",

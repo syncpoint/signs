@@ -3,7 +3,8 @@
 * replace webpack with vite
 * support UMD/CJS and ESM
 * improved tests
-* updated ramda incl. breaking change (propEq)
+* deps: updated ramda incl. breaking change (propEq)
+* deps: updated svg-path-bbox
 
 1.0.1
 * initial public version
