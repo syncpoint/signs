@@ -1,8 +1,8 @@
-import regular from './icon-data.json'
-import index from './icon-index.json'
-import special from './icons-special.json'
-import skkm from './icons-skkm.json'
-import * as BBox from '../bbox'
+import regular from './icon-data.json' assert { type: "json" }
+import index from './icon-index.json' assert { type: "json" }
+import special from './icons-special.json' assert { type: "json" }
+import skkm from './icons-skkm.json' assert { type: "json" }
+import * as BBox from '../bbox.js'
 
 const boxes = Object.entries(({ ...regular, ...skkm })).reduce((acc, [key, icon]) => {
   acc[key] = icon.length ? BBox.of(icon) : [100, 100, 100, 100]
@@ -49,13 +49,13 @@ export default options => {
   const instructions = lookupInstructions(options)
   const bbox = lookupBBox(options)
 
-  const applyOutline = 
+  const applyOutline =
     (!!options.outlineWidth && !!options.outlineColor) &&
     (!options.frame || !!options.monoColor)
-  
+
   const finalInstructions = applyOutline
     ? [
-        ...styles(instructions), 
+        ...styles(instructions),
         ...instructions.map(x => ({ ...x, ...options['style:icon/outline'] }))
       ]
     : styles(instructions)

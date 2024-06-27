@@ -1,7 +1,7 @@
 import * as R from 'ramda'
-import * as BBox from '../bbox'
-import FRAME from './frame.json'
-import DECORATIONS from './decorations.json'
+import * as BBox from '../bbox.js'
+import FRAME from './frame.json' assert { type: "json" }
+import DECORATIONS from './decorations.json' assert { type: "json" }
 
 FRAME['SPACE+UNKNOWN'] = FRAME['AIR+UNKNOWN']
 FRAME['SPACE+FRIEND'] = FRAME['AIR+FRIEND']

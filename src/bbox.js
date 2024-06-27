@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 import pathbbox from 'svg-path-bbox'
-import * as Text from './text'
+import * as Text from './text.js'
 
 export const resize = R.curry(([dx, dy], bbox) => [
   bbox[0] - dx,

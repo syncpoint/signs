@@ -1,5 +1,5 @@
-import { legacy, modern } from './standard'
-import { AMPLIFIERS } from './amplifiers'
+import { legacy, modern } from './standard/index.js'
+import { AMPLIFIERS } from './amplifiers.js'
 
 const factories = [
   legacy,

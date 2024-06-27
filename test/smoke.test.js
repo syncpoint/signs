@@ -1,20 +1,40 @@
-/* test principle wiring */
-require('@babel/register')
-const assert = require('assert')
-const { Symbol } = require('../src')
+import fs from 'fs'
+import assert from 'assert'
+import { Symbol } from '../src/index.js'
 
-const fixture = [
-  ['LEGACY', 'SFGP------*****', '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="158" height="108" viewBox="21 46 158 108" fill="none" stroke="black" stroke-width="4" font-family="Arial"><path d="M25,50 l150,0 0,100 -150,0 z" fill="rgb(128,224,255)" fill-opacity="1" stroke="black" stroke-width="4"></path></svg>'],
-  ['MODERN', '10031000000000000000', '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="158" height="108" viewBox="21 46 158 108" fill="none" stroke="black" stroke-width="4" font-family="Arial"><path d="M25,50 l150,0 0,100 -150,0 z" fill="rgb(128,224,255)" fill-opacity="1" stroke="black" stroke-width="4"></path><path d="M25,50 l150,0 0,100 -150,0 z" stroke="rgb(239,239,239)" stroke-width="4" stroke-dasharray="none"></path></svg>'],
-  ['SPECIAL', 'GFSPLCM---*****', '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="208" height="208" viewBox="-4 -4 208 208" fill="none" stroke="black" stroke-width="4" font-family="Arial"><path d="m 13,75 v 46 H 137 v 28 L 187,100 138,51 v 24 z" stroke="black"></path></svg>'],
-  ['SKKM', 'KFGPDI----', '<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="208" height="208" viewBox="-4 -4 208 208" stroke-width="4" fill="none" font-family="Arial"><path stroke="red" fill="rgba(255, 255, 255, 255)" d="M 100,155 L 155,155 L 100,45 L 45,155 Z"></path><circle stroke="red" fill="none" cx="100" cy="105" r="13"></circle><g transform="matrix(1 0 0 1 -10 15)"><circle stroke="red" fill="none" cx="100" cy="105" r="13"></circle></g><g transform="matrix(1 0 0 1 10 15)"><circle stroke="red" fill="none" cx="100" cy="105" r="13"></circle></g></svg>']
+// Cover as much code as possible with only a few configutions.
+const fixtures = [
+  {
+    sidc: 'SFGCUCIZ--DH', /* 89.48% Statements 1310/1464 */
+    modifiers: {
+      AO: 'A:BBB-CC', F: '+/-',     G: 'beer@1600', M: 'B',
+      Q: '120',       T: 'TANGO-1', W: 'O/O',       Z: '25 km/h'
+    }
+  },
+  { sidc: 'EFOPBI----H----' /* 91.25% Statements 1336/1464 */ },
+  { sidc: 'SFGPES----MO---' /* 91.87% Statements 1345/1464 */ },
+  { sidc: '30031007181211020000' /* 95.35% Statements 1396/1464 */ }
 ]
 
-describe('Symbol', function () {
-  fixture.forEach(([label, sidc, expected]) => {
-    it(label, function () {
-      const actual = Symbol.of({ sidc }).asSVG()
-      assert.equal(actual, expected)
+// FIXME: 30031007181211020000 - wrong symbol border color
+
+const snapshot = 'current'
+describe.skip('generate snapshot', function () {
+  fixtures.forEach(options => {
+    it(options.sidc, function () {
+      const svg = Symbol.of(options).asSVG()
+      fs.writeFileSync(`./snapshots/${snapshot}/${options.sidc}.svg`, svg)
+      console.log(svg)
+    })
+  })
+})
+
+describe('verify snapshot', function () {
+  fixtures.forEach(options => {
+    it(options.sidc, function () {
+      const actual = Symbol.of(options).asSVG()
+      const expected = fs.readFileSync(`./snapshots/${snapshot}/${options.sidc}.svg`, 'utf8')
+      assert.strictEqual(actual, expected)
     })
   })
 })

@@ -1,5 +1,5 @@
-import * as BBox from '../bbox'
-import MOBILITY from './mobility.json'
+import * as BBox from '../bbox.js'
+import MOBILITY from './mobility.json' assert { type: "json" }
 
 const OFFSET = {
   TOWED: 8,

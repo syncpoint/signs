@@ -1,4 +1,4 @@
-import * as BBox from '../bbox'
+import * as BBox from '../bbox.js'
 
 export const taskForce = options => {
   const widths = { CORPS: 110, ARMY: 145, ARMY_GROUP: 180, REGION: 215 }

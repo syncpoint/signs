@@ -1,9 +1,9 @@
-import * as BBox from '../bbox'
-import * as Text from '../text'
+import * as BBox from '../bbox.js'
+import * as Text from '../text.js'
 
 // Currently all templates have exactly five slots to the left and/or to the right.
-import templates from './templates.json'
-import fields from './fields.json'
+import templates from './templates.json' assert { type: "json" }
+import fields from './fields.json' assert { type: "json" }
 
 
 const fromTemplate = (template, options) => box => {

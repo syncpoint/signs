@@ -1,5 +1,5 @@
-import * as BBox from '../bbox'
-import { DEG2RAD, rotate, translate, matrix } from '../transform'
+import * as BBox from '../bbox.js'
+import { DEG2RAD, rotate, translate, matrix } from '../transform.js'
 
 export const direction = options => {
   const paths = d => {

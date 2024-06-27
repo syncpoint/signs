@@ -1,4 +1,4 @@
-import * as BBox from '../bbox'
+import * as BBox from '../bbox.js'
 
 export const installation = options => {
   const heights = strokeWidth => ({

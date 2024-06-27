@@ -1,0 +1,8 @@
+1.1.0
+* switched to type module
+* replace webpack with vite
+* support UMD/CJS and ES6
+* updated dependencies
+
+1.0.1
+* initial public version

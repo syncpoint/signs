@@ -1,4 +1,4 @@
-import { instructions } from './instructions'
+import { instructions } from './instructions.js'
 
 export const accept = options => {
   const [sidc] = options.sidc.split('+')

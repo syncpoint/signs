@@ -1,2 +1,2 @@
-export * as legacy from './legacy'
-export * as modern from './modern'
+export * as legacy from './legacy.js'
+export * as modern from './modern.js'
