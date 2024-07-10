@@ -1,5 +1,6 @@
 import fs from 'fs'
 import assert from 'assert'
+import xmlFormat from 'xml-formatter'
 import { Symbol } from '../src/index.js'
 
 // Cover as much code as possible with only a few configutions.
@@ -15,16 +16,21 @@ const fixtures = [
   { sidc: 'SFGPES----MO---' }, // 91.43% Statements 1366/1494
   { sidc: '30031007181211020000' }, // 94.84% Statements 1417/1494
   // invalid symbol
-  { sidc: 'MUZP------' } // 95.44% Statements 1425/1493
+  { sidc: 'MUZP------' }, // 95.44% Statements 1425/1493
+  // {
+  //   sidc: 'SDACMFQR----',
+  //   modifiers: {
+  //     AO: 'A:BBB-CC', Q: 280, T: 'ALPHA-1', W: 'DTG', G: 'CMT', F: '+/-' }
+  // } //
 ]
 
-// FIXME: 30031007181211020000 - wrong symbol border color
+
 
 const snapshot = 'current'
 describe.skip('generate snapshot', function () {
   fixtures.forEach(options => {
     it(options.sidc, function () {
-      const svg = Symbol.of(options).asSVG()
+      const svg = xmlFormat(Symbol.of(options).asSVG())
       fs.writeFileSync(`./snapshots/${snapshot}/${options.sidc}.svg`, svg)
     })
   })
@@ -33,7 +39,7 @@ describe.skip('generate snapshot', function () {
 describe('verify snapshot', function () {
   fixtures.forEach(options => {
     it(options.sidc, function () {
-      const actual = Symbol.of(options).asSVG()
+      const actual = xmlFormat(Symbol.of(options).asSVG())
       const expected = fs.readFileSync(`./snapshots/${snapshot}/${options.sidc}.svg`, 'utf8')
       assert.strictEqual(actual, expected)
     })
