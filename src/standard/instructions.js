@@ -78,22 +78,20 @@ export const instructions = (options, meta) => {
 
   const [bbox, children] = Layout.compose(
     (context.frame && context.dimension !== 'CONTROL') && Frame.frame(context),
+    context.condition && Condition.condition(context),
     (context.frame && (!context.present || context.pending)) && Frame.overlay(context),
     (context.frame && context.outline) && Frame.outline(context),
     !dropIcon && icon(context),
     Layout.overlay(
       Layout.compose(
         context.frame && Frame.context(context),
-        Layout.overlay(
-          context.infoFields && fields(context),
-          context.condition && Condition.condition(context)
-        )
+        context.infoFields && fields(context),
       ),
       Layout.compose(
         Layout.overlay(
           context.installation && Installation.installation(context),
           context.echelon && Echelon.echelon(context),
-          (context.echelon && context.outline) && Echelon.outline(context),
+          context.echelon && context.outline && Echelon.outline(context),
           context.taskForce && Modifiers.taskForce(context),
           context.feintDummy && Modifiers.feintDummy(context),
 

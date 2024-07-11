@@ -17,17 +17,17 @@ const fixtures = [
   { sidc: '30031007181211020000' }, // 94.84% Statements 1417/1494
   // invalid symbol
   { sidc: 'MUZP------' }, // 95.44% Statements 1425/1493
-  // {
-  //   sidc: 'SDACMFQR----',
-  //   modifiers: {
-  //     AO: 'A:BBB-CC', Q: 280, T: 'ALPHA-1', W: 'DTG', G: 'CMT', F: '+/-' }
-  // } //
+  {
+    sidc: 'SDACMFQR----',
+    modifiers: {
+      Q: 280, T: 'ALPHA-1', W: 'DTG', G: 'CMT', F: '+/-' }
+  } // 96.04% 1432/1491
 ]
 
 
 
 const snapshot = 'current'
-describe.skip('generate snapshot', function () {
+describe('generate snapshot', function () {
   fixtures.forEach(options => {
     it(options.sidc, function () {
       const svg = xmlFormat(Symbol.of(options).asSVG())
@@ -36,7 +36,7 @@ describe.skip('generate snapshot', function () {
   })
 })
 
-describe('verify snapshot', function () {
+describe.only('verify snapshot', function () {
   fixtures.forEach(options => {
     it(options.sidc, function () {
       const actual = xmlFormat(Symbol.of(options).asSVG())
