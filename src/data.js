@@ -12,6 +12,11 @@ export default [
     sidc: 'SFGPUCIZ----'
   },
   {
+    description: 'Symbol icon is not displayed if "special C2 headquarters" text modifier [AA] is supplied.',
+    sidc: 'SFGPUCIZ----',
+    modifiers: { AA: 'SOF'}
+  },
+  {
     description: 'One icon may vary between different frame shapes. Compare to previous [MECHANIZED INFRANTRY] with [FRIENDLY] frame.',
     sidc: 'SHGPUCIZ----'
   },
@@ -37,6 +42,12 @@ export default [
       W: 'W', X: 'X', Y: 'Y', V: 'V', T: 'T', Z: 'Z',
       F: 'F', G: 'G', H: 'H', M: 'M', J: 'J', K: 'K', L: 'L', N: 'N', P: 'P'
     }
+  },
+  {
+    description: 'Equipment has a dedicated text modifier for [QUANTITY].',
+    sidc: 'SHGPEWMAS------',
+    modifiers: { C: '2' }
+
   },
   {
     description: 'On top of the frame, we first stack [INSTALLATION] modifier...',

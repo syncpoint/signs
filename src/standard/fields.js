@@ -14,21 +14,14 @@ const fromTemplate = (template, options) => box => {
     top: extent => {
       const left = 100 - extent[0] / 2
       const right = left + extent[0]
-      const top = box[1] - extent[1]
+      const top = box[1] - extent[1] - 10
       const bottom = top + extent[1]
-      return [left, top, right, bottom]
-    },
-    bottom: extent => {
-      const left = 100 - extent[0] / 2
-      const right = left + extent[0]
-      const top = box[3] + gap / 2
-      const bottom = top + extent[1] - gap / 2
       return [left, top, right, bottom]
     },
     center: extent => {
       const left = 100 - extent[0] / 2
       const right = left + extent[0]
-      const top = 100 - extent[1] / 2.5
+      const top = 100 - extent[1] / 1.5
       const bottom = top + extent[1]
       return [left, top, right, bottom]
     },
