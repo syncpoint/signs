@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="178.5" height="166.5" viewBox="16.75 16.75 178.5 166.5" fill="none" stroke="black" stroke-width="4" font-family="Arial">
+    <path d="M63,63 C63,20 137,20 137,63 C180,63 180,137 137,137 C137,180 63,180 63,137 C20,137 20,63 63,63 Z z" stroke="red" stroke-width="24" stroke-linejoin="round" stroke-linecap="round"></path>
+    <text x="159.25" y="60" font-family="Arial" font-size="35" font-weight="bold" text-anchor="start" stroke-width="24" fill="black" stroke="red" stroke-linejoin="round" stroke-linecap="round">
+        X
+    </text>
+    <path d="M63,63 C63,20 137,20 137,63 C180,63 180,137 137,137 C137,180 63,180 63,137 C20,137 20,63 63,63 Z" fill="rgb(255,255,128)" fill-opacity="1" stroke="black" stroke-width="4"></path>
+    <text x="159.25" y="60" font-family="Arial" font-size="35" font-weight="bold" text-anchor="start" stroke-width="0" fill="black">
+        X
+    </text>
+</svg>

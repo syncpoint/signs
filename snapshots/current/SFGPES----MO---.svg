@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="128" height="144" viewBox="36 36 128 144" fill="none" stroke="black" stroke-width="4" font-family="Arial">
-    <circle cx="100" cy="100" r="60" fill="rgb(128,224,255)" fill-opacity="1" stroke="black" stroke-width="4"></circle>
-    <path stroke="stroke:path/icon" fill="black" d="m 100,60 c 0,15 25,40 40,40 -15,0 -40,25 -40,40 0,-15 -25,-40 -40,-40 15,0 40,-25 40,-40 z"></path>
-    <g transform="translate(0, 160)">
-        <path d="M53,1 l94,0"></path>
-        <circle cx="58" cy="8" r="8"></circle>
-        <circle cx="142" cy="8" r="8"></circle>
-    </g>
-</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="158" height="211" viewBox="21 -57 158 211" fill="none" stroke="black" stroke-width="4" font-family="Arial">
+    <path d="M25,50 l150,0 0,100 -150,0 z" fill="rgb(128,224,255)" fill-opacity="1" stroke="black" stroke-width="4"></path>
+    <g fill="black" stroke="black" stroke-width="4" transform="translate(0, 50)">
+        <circle cx="100" cy="-20" r="7.5"></circle>
+        <circle cx="70" cy="-20" r="7.5"></circle>
+        <circle cx="130" cy="-20" r="7.5"></circle>
+    </g>
+    <g transform="translate(0, 50)">
+        <path d="M55,0 L55,-40 145,-40 145,0"></path>
+    </g>
+    <path d="M100,-25 L25,50 M100,-25 L175,50" stroke-dasharray="8 8"></path>
+    <path d="M25,-28 l150,0 0,-25 -150,0 z" fill="rgb(128,224,255)"></path>
+    <text x="100" y="-33" text-anchor="middle" font-size="22" font-weight="bold" stroke-width="4" stroke="none" fill="black">
+        A:BBB-CC
+    </text>
+</svg>
