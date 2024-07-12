@@ -34,7 +34,7 @@ const meta = options => {
   meta.type = 'MODERN'
   meta.standard = standard || '2525'
 
-  meta.generic = parts.symbolSet + ':' + parts.function
+  meta.generic = parts.symbolSet + '-' + parts.function
   meta.context = CONTEXT[parts.context]
   meta.affiliation =
     AFFILIATION[parts.context + parts.affiliation] ||
@@ -44,6 +44,7 @@ const meta = options => {
   meta.joker = meta.context === 'EXERCISE' && parts.affiliation === '5' // SUSPECT
   meta.faker = meta.context === 'EXERCISE' && parts.affiliation === '6' // HOSTILE
   meta.status = STATUS[parts.status]
+  meta.present = parts.status === '0'
   meta.dimension = DIMENSION.find(([regex]) => sidc.match(regex))[1]
   meta.civilian = CIVILIAN.some(regex => sidc.match(regex))
   // TODO: PENDING - ETC/POSCON tracks, fused tracks
