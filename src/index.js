@@ -1,5 +1,6 @@
 import { legacy, modern, fallback } from './standard/index.js'
 import { AMPLIFIERS } from './amplifiers.js'
+import data from './data.js'
 
 const factories = [
   legacy,
@@ -36,3 +37,8 @@ Symbol.of = options => {
   if (!factory) return
   return factory.document(options)
 }
+
+/**
+ * Selected symbol descriptors for story telling and regression testing.
+ */
+Symbol.data = () => data
