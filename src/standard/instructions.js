@@ -66,7 +66,7 @@ export const instructions = (options, meta) => {
   // Center is available after HQ staff was processed:
   let center
 
-  // Only include icon if special c2 headquarters (AA) is NOT provided.
+  // Only include icon if 'special c2 headquarters' (AA) is NOT provided.
   // SKKM is a special case with icons only.
   const dropIcon = !meta.skkm && hints.infoFields && hints.modifiers.AA
 
@@ -77,15 +77,16 @@ export const instructions = (options, meta) => {
   }]]
 
   const [bbox, children] = Layout.compose(
-    (context.frame && context.dimension !== 'CONTROL') && Frame.frame(context),
-    context.condition && Condition.condition(context),
-    (context.frame && (!context.present || context.pending)) && Frame.overlay(context),
-    (context.frame && context.outline) && Frame.outline(context),
+    Frame.frame(context),
     !dropIcon && icon(context),
     Layout.overlay(
       Layout.compose(
         context.frame && Frame.context(context),
         context.infoFields && fields(context),
+      ),
+      Layout.compose(
+        context.mobility && Mobility.mobility(context),
+        Condition.condition(context),
       ),
       Layout.compose(
         Layout.overlay(
@@ -109,9 +110,8 @@ export const instructions = (options, meta) => {
             }
             ,
           context.direction !== undefined && Direction.direction(context),
-          context.mobility && Mobility.mobility(context),
         ),
-        context.modifiers.AO && Engagement.engagement(context),
+        context.modifiers.AO && Engagement.engagement(context)
       )
     ),
 

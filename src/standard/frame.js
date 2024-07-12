@@ -2,6 +2,7 @@ import * as R from 'ramda'
 import * as BBox from '../bbox.js'
 import FRAME from './frame.json' assert { type: "json" }
 import DECORATIONS from './decorations.json' assert { type: "json" }
+import * as Layout from '../layout.js'
 
 FRAME['SPACE+UNKNOWN'] = FRAME['AIR+UNKNOWN']
 FRAME['SPACE+FRIEND'] = FRAME['AIR+FRIEND']
@@ -22,21 +23,25 @@ const frames = Object.entries(FRAME).reduce((acc, [key, frame]) => {
 }, {})
 
 const instruction =
-  (typeHint, style) =>
-    options => {
-      // Outline frame must not be closed for monochrome color:
-      const type = options.monoColor ? 'open' : typeHint
-      const key = `${options.dimension}+${options.affiliation}`
-      const frame = frames[key]
-      const instructions = [{ ...frame[type], ...options[style] }]
-      const decoration = DECORATIONS[key]
-      if (decoration) instructions.push({ ...decoration, ...options['style:frame/decoration']})
-      return () => [frame.bbox, instructions]
-    }
+  (options, typeHint, style) => {
+    // Outline frame must not be closed for monochrome color:
+    const type = options.monoColor ? 'open' : typeHint
+    const key = `${options.dimension}+${options.affiliation}`
+    const frame = frames[key]
+    const instructions = [{ ...frame[type], ...options[style] }]
+    const decoration = DECORATIONS[key]
+    if (decoration) instructions.push({ ...decoration, ...options['style:frame/decoration']})
+    return () => [frame.bbox, instructions]
+  }
 
-export const outline = instruction('closed', 'style:outline')
-export const frame = instruction('open', 'style:frame/shape')
-export const overlay = instruction('open', 'style:frame/overlay')
+export const frame = options => {
+  if (!options.frame) return bbox => [bbox, []] // TODO: set bbox to frame bbox
+  else return Layout.compose(
+    options.dimension !== 'CONTROL' && instruction(options, 'open', 'style:frame/shape'),
+    (!options.present || options.pending) && instruction(options, 'open', 'style:frame/overlay'),
+    (options.outline) && instruction(options, 'closed', 'style:outline')
+  )
+}
 
 export const context = options => {
   const text = R.cond([
