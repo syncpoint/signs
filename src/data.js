@@ -4,6 +4,10 @@ export default [
     sidc: 'SFGPU-------'
   },
   {
+    description: 'Frame border for anticipated or planned symbol is dashed.',
+    sidc: 'SFGAU-------'
+  },
+  {
     description: 'An icon if available is placed inside the frame.',
     sidc: 'SFGPUCIZ----'
   },
@@ -90,12 +94,31 @@ export default [
     outlineColor: 'yellow'
   },
   {
-    description: 'Striclty speaking, 2525C does not support [OPERATIONAL CONDITION] for units. We do.',
+    description: 'Strictly speaking, 2525C does not support [OPERATIONAL CONDITION] for units. We do.',
     sidc: 'SDGCI-----GD---',
     modifiers: {
       W: 'W', X: 'X', Y: 'Y', V: 'V', T: 'T', Z: 'Z',
       F: 'F', G: 'G', H: 'H', M: 'M', J: 'J', K: 'K', L: 'L', N: 'N', P: 'P'
     }
+  },
+  {
+    description: 'Direction indicator exits from the bottom center of regular units, i.e. not headquarters.',
+    sidc: 'SFGPUCIZ----',
+    modifiers: { Q: '120', Z: '25 km/h' }
+  },
+  {
+    description: 'Direction indicator is attached to headquarters staff for HQs.',
+    sidc: 'SFGPUCIZ--A-',
+    modifiers: { Q: '120', Z: '25 km/h' }
+  },
+  {
+    description: 'Direction indicator originates in frame center for equipments.',
+    sidc: 'SUAPMF----',
+    modifiers: { Q: '120', Z: '25 km/h' }
+  },
+  {
+    description: 'Invalid symbol for identifier codes are displayed as proposed by 2525/APP6.',
+    sidc: 'MUZP------'
   },
   {
     context: 'issue',

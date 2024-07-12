@@ -37,6 +37,7 @@
             J/K/L/N/P
         </text>
     </g>
+    <path d="M25,155 l150,0 0,25 -150,0 z" fill="rgb(0,255,0)" stroke="black" stroke-width="4"></path>
     <g fill="black" stroke="black" stroke-width="4" transform="translate(0, 50)">
         <circle cx="100" cy="-20" r="7.5"></circle>
         <circle cx="70" cy="-20" r="7.5"></circle>

@@ -4,7 +4,7 @@ import xmlFormat from 'xml-formatter'
 import { Symbol } from '../src/index.js'
 
 const snapshot = 'current'
-describe.only('generate snapshot', function () {
+describe('generate snapshot', function () {
   Symbol.data().forEach((options, i) => {
     it(`${options.sidc} [${i}]`, function () {
       const svg = xmlFormat(Symbol.of(options).asSVG())

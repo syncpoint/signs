@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="158" height="118" viewBox="21 36 158 118" fill="none" stroke="black" stroke-width="4" font-family="Arial">
+    <path d="M25,50 l150,0 0,100 -150,0 z" fill="rgb(128,224,255)" fill-opacity="1" stroke="black" stroke-width="4"></path>
+    <g transform="translate(0, 52)" fill="black" stroke="black" stroke-width="4">
+        <path d="M85,-2 85,-12 115,-12 115,-2 100,-4 Z"></path>
+    </g>
+</svg>
