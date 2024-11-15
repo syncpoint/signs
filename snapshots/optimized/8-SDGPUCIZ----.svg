@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="447.6" height="188" fill="none" stroke="#000" stroke-width="4" baseProfile="tiny" font-family="Arial" version="1.2" viewBox="-56.2 14.5 447.6 188"><path fill="#80E0FF" d="M25 50h150v100H25z"/><path fill="#000" stroke="stroke:path/icon" d="m25 50 150 100m-150 0L175 50"/><path stroke="stroke:path/icon" d="M125 80c25 0 25 40 0 40H75c-25 0-25-40 0-40Z"/><text x="185" y="60" fill="#000" stroke-width="0" font-size="35" font-weight="bold">
+        X
+    </text><g fill="#000" stroke-width="0" font-size="36" text-anchor="end"><text x="61.2" y="36" transform="translate(-52.2 18.5)">
+            W
+        </text><text x="61.2" y="72" transform="translate(-52.2 18.5)">
+            X/Y
+        </text><text x="61.2" y="108" transform="translate(-52.2 18.5)">
+            V
+        </text><text x="61.2" y="144" transform="translate(-52.2 18.5)">
+            T
+        </text><text x="61.2" y="180" transform="translate(-52.2 18.5)">
+            Z
+        </text></g><g fill="#000" stroke-width="0" font-size="36"><text y="36" transform="translate(223 18.5)">
+            F
+        </text><text y="72" transform="translate(223 18.5)">
+            G
+        </text><text y="108" transform="translate(223 18.5)">
+            H
+        </text><text y="144" transform="translate(223 18.5)">
+            M
+        </text><text y="180" transform="translate(223 18.5)">
+            J/K/L/N/P
+        </text></g></svg>
