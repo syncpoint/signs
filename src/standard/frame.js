@@ -1,8 +1,9 @@
 import * as R from 'ramda'
 import * as BBox from '../bbox.js'
-import FRAME from './frame.json' assert { type: "json" }
-import DECORATIONS from './decorations.json' assert { type: "json" }
+import FRAME from './frame.json' with { type: "json" }
+import DECORATIONS from './decorations.json' with { type: "json" }
 import * as Layout from '../layout.js'
+import { stacks } from './stack.js'
 
 FRAME['SPACE+UNKNOWN'] = FRAME['AIR+UNKNOWN']
 FRAME['SPACE+FRIEND'] = FRAME['AIR+FRIEND']
@@ -22,12 +23,21 @@ const frames = Object.entries(FRAME).reduce((acc, [key, frame]) => {
   return acc
 }, {})
 
+const translate = (frame, offset) =>
+  offset[0] === 0 && offset[1] === 0
+    ? frame // nothing to do; don't add unnecessary translate(0 0)
+    : {
+      open: { ...frame.open, transform: `translate(${offset[0]} ${offset[1]})` },
+      closed: { ...frame.closed, transform: `translate( ${offset[0]} ${offset[1]})` },
+      bbox: [frame.bbox[0], frame.bbox[1], frame.bbox[2] + offset[0], frame.bbox[3] + offset[1]]
+    }
+
 const instruction =
-  (options, typeHint, style) => {
+  (options, typeHint, style, offset) => {
     // Outline frame must not be closed for monochrome color:
     const type = options.monoColor ? 'open' : typeHint
     const key = `${options.dimension}+${options.affiliation}`
-    const frame = frames[key]
+    const frame = translate(frames[key], offset)
     const instructions = [{ ...frame[type], ...options[style] }]
     const decoration = DECORATIONS[key]
     if (decoration) instructions.push({ ...decoration, ...options['style:frame/decoration']})
@@ -36,11 +46,14 @@ const instruction =
 
 export const frame = options => {
   if (!options.frame) return bbox => [bbox, []] // TODO: set bbox to frame bbox
-  else return Layout.compose(
-    options.dimension !== 'CONTROL' && instruction(options, 'open', 'style:frame/shape'),
-    (!options.present || options.pending) && instruction(options, 'open', 'style:frame/overlay'),
-    (options.outline) && instruction(options, 'closed', 'style:outline')
-  )
+  else {
+    const xs = stacks[options.stack].flatMap(offset => [
+      options.dimension !== 'CONTROL' && instruction(options, 'open', 'style:frame/shape', offset),
+      (!options.present || options.pending) && instruction(options, 'open', 'style:frame/overlay', offset),
+      (options.outline) && instruction(options, 'closed', 'style:outline', offset)
+    ])
+    return Layout.compose(...xs)
+  }
 }
 
 export const context = options => {

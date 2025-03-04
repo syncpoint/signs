@@ -12,10 +12,11 @@ import * as Condition from './condition.js'
 import * as Direction from './direction.js'
 import icon from './icons.js'
 import fields from './fields.js'
+import { deltaX } from './stack.js'
 
 export const instructions = (options, meta) => {
 
-  const hints = {
+  const baseHints = {
     colorMode: options.colorMode || 'light',
 
     fillOpacity:
@@ -38,19 +39,29 @@ export const instructions = (options, meta) => {
     infoOutlineColor: options.infoOutlineColor || options.outlineColor,
     infoOutlineWidth: options.infoOutlineWidth || options.outlineWidth || 0,
     size: options.size || 100, // %
-    hqStaffLength: options.hqStaffLength || 100
+    hqStaffLength: options.hqStaffLength || 100,
+    stack: Math.min(Number(options.stack), 6) || 1
   }
 
-  // Implicitly true if not explicitly false:
-  hints.outline =
-    options.outline === false
-      ? false
-      : hints.outlineWidth > 0 &&  hints.outlineColor
+  const drivedHints = {
+    // Implicitly true if not explicitly false:
+    outline:
+      options.outline === false
+        ? false
+        : baseHints.outlineWidth > 0 &&  baseHints.outlineColor
+        ,
 
-  hints.infoOutline =
-    options.infoOutline === false
-      ? false
-      : hints.infoOutlineWidth > 0 &&  hints.infoOutlineColor
+    infoOutline:
+      options.infoOutline === false
+        ? false
+        : baseHints.infoOutlineWidth > 0 &&  baseHints.infoOutlineColor
+  }
+
+  const hints = {
+    ...baseHints,
+    ...drivedHints
+  }
+
 
   const context = {
     ...meta,
@@ -68,13 +79,21 @@ export const instructions = (options, meta) => {
 
   // Only include icon if 'special c2 headquarters' (AA) is NOT provided.
   // SKKM is a special case with icons only.
-  const dropIcon = !meta.skkm && hints.infoFields && hints.modifiers.AA
+  const dropIcon = !meta.skkm && baseHints.infoFields && baseHints.modifiers.AA
 
   const debugRectangle = bbox => [bbox, [{
     type: 'rect',
     ...BBox.xywh(bbox),
     ...context['style:debug']
   }]]
+
+  // Compensate for stack extending bounding box to the right,
+  // which is unwanted for Feint/Dummy and Operational Condition.
+  const compensate = fn => bbox => {
+    const box = [...bbox]
+    box[2] = box[2] - (context.stack - 1) * deltaX
+    return fn(box)
+  }
 
   const [bbox, children] = Layout.compose(
     Frame.frame(context),
@@ -86,7 +105,7 @@ export const instructions = (options, meta) => {
       ),
       Layout.compose(
         context.mobility && Mobility.mobility(context),
-        Condition.condition(context),
+        compensate(Condition.condition(context)),
       ),
       Layout.compose(
         Layout.overlay(
@@ -94,7 +113,7 @@ export const instructions = (options, meta) => {
           context.echelon && Echelon.echelon(context),
           context.echelon && context.outline && Echelon.outline(context),
           context.taskForce && Modifiers.taskForce(context),
-          context.feintDummy && Modifiers.feintDummy(context),
+          context.feintDummy && compensate(Modifiers.feintDummy(context)),
 
           // Tap into intermediate bounding box to get anchor right.
           // For HQs, info fields would shift anchor horizontally, otherwise.
@@ -119,14 +138,14 @@ export const instructions = (options, meta) => {
     bbox => [BBox.resize([padding, padding], bbox), []]
   )(BBox.NULL)
 
-  const scale = x => x * hints.size / 100
+  const scale = x => x * baseHints.size / 100
   const extent = BBox.extent(bbox)
   const [width, height] = extent.map(scale)
   const size = { width, height }
 
   const anchor = {
-    x: (center.x - bbox[0]) * hints.size / 100,
-    y: (center.y - bbox[1]) * hints.size / 100
+    x: (center.x - bbox[0]) * baseHints.size / 100,
+    y: (center.y - bbox[1]) * baseHints.size / 100
   }
 
   // Poor man's (SVG) layers:
