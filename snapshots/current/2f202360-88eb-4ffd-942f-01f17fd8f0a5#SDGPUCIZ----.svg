@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.2" baseProfile="tiny" width="447.6" height="188" viewBox="-56.199999999999996 14.5 447.59999999999997 188" fill="none" stroke="black" stroke-width="4" font-family="Arial">
+    <path d="M25,50 l150,0 0,100 -150,0 z" fill="rgb(128,224,255)" fill-opacity="1" stroke="black" stroke-width="4"></path>
+    <path stroke="stroke:path/icon" fill="black" d="M25,50 L175,150 M25,150 L175,50"></path>
+    <path stroke="stroke:path/icon" fill="none" d="M125,80 C150,80 150,120 125,120 L75,120 C50,120 50,80 75,80 Z"></path>
+    <text x="185" y="60" font-family="Arial" font-size="35" font-weight="bold" text-anchor="start" stroke-width="0" fill="black">
+        X
+    </text>
+    <g transform="translate(-52.199999999999996,18.5)" font-family="Arial" fill="black" font-size="36" stroke-width="0" text-anchor="end">
+        <text x="61.199999999999996" y="36">
+            W
+        </text>
+        <text x="61.199999999999996" y="72">
+            X/Y
+        </text>
+        <text x="61.199999999999996" y="108">
+            V
+        </text>
+        <text x="61.199999999999996" y="144">
+            T
+        </text>
+        <text x="61.199999999999996" y="180">
+            Z
+        </text>
+    </g>
+    <g transform="translate(223,18.5)" font-family="Arial" fill="black" font-size="36" stroke-width="0" text-anchor="start">
+        <text x="0" y="36">
+            F
+        </text>
+        <text x="0" y="72">
+            G
+        </text>
+        <text x="0" y="108">
+            H
+        </text>
+        <text x="0" y="144">
+            M
+        </text>
+        <text x="0" y="180">
+            J/K/L/N/P
+        </text>
+    </g>
+</svg>
