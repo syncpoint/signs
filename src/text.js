@@ -1,4 +1,4 @@
-import chars from './chars.json' assert { type: "json" }
+import chars from './chars.json' with { type: "json" }
 
 const defaultWidth = chars['W']
 

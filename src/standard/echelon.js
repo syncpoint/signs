@@ -1,5 +1,5 @@
 import * as BBox from '../bbox.js'
-import ECHELON from './echelon.json' assert { type: "json" }
+import ECHELON from './echelon.json' with { type: "json" }
 
 const echelons = Object.entries(ECHELON)
   .reduce((acc, [key, children]) => {

@@ -1,7 +1,7 @@
-import regular from './icon-data.json' assert { type: "json" }
-import index from './icon-index.json' assert { type: "json" }
-import special from './icons-special.json' assert { type: "json" }
-import skkm from './icons-skkm.json' assert { type: "json" }
+import regular from './icon-data.json' with { type: "json" }
+import index from './icon-index.json' with { type: "json" }
+import special from './icons-special.json' with { type: "json" }
+import skkm from './icons-skkm.json' with { type: "json" }
 import * as BBox from '../bbox.js'
 
 const undefinedIcon = [{
